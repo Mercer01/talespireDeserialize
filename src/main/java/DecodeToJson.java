@@ -1,9 +1,13 @@
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.UUID;
 import java.util.zip.GZIPInputStream;
@@ -80,20 +84,24 @@ public class DecodeToJson {
 
             for (int i = 0; i < AssetCount; i++) {
                 JsonObject asset = new JsonObject();
-                JsonArray vectors = new JsonArray();
 
-                for (int j = 0; j < 6; j++) {
+                for(String temp: Arrays.asList("location","size")) {
                     byte[] vectorFloats = new byte[4];
                     readBytes(stream, vectorFloats);
+                    float x = getFloatFromBytes(vectorFloats);
 
-                    ByteBuffer BuffVectorStream = ByteBuffer.wrap(vectorFloats);
-                    BuffVectorStream.order(ByteOrder.LITTLE_ENDIAN);
-                    float vectorFloat = BuffVectorStream.getFloat();
-                    vectors.add(vectorFloat);
+                    vectorFloats = new byte[4];
+                    readBytes(stream, vectorFloats);
+                    float y =  getFloatFromBytes(vectorFloats);
+
+                    vectorFloats = new byte[4];
+                    readBytes(stream, vectorFloats);
+                    float z = getFloatFromBytes(vectorFloats);
+
+                    vector3 vector = new vector3(x,y,z);
+
+                    asset.add(temp, vector.toJSON());
                 }
-                //This is currently two Vector3's I should deal with this better
-                asset.add("VectorPair" + i, vectors);
-
 
                 // get Rotation Header.
                 byte[] Rotation = new byte[1];
@@ -114,7 +122,28 @@ public class DecodeToJson {
         }
         decodedJson.add("Assets", AllAssets);
 
-        System.out.println("Bytes remaining " + stream.available());
+        JsonObject bound = new JsonObject();
+        JsonArray bounds = new JsonArray();
+
+        for (int j = 0; j < 6; j++) {
+            byte[] vectorFloats = new byte[4];
+            readBytes(stream, vectorFloats);
+
+            ByteBuffer BuffVectorStream = ByteBuffer.wrap(vectorFloats);
+            BuffVectorStream.order(ByteOrder.LITTLE_ENDIAN);
+            float vectorFloat = BuffVectorStream.getFloat();
+            bounds.add(vectorFloat);
+        }
+        bound.add("Vector0",bounds);
+        // get Rotation Header.
+        byte[] boundsRotation = new byte[1];
+        readBytes(stream, boundsRotation);
+
+        ByteBuffer RotationBuffer = ByteBuffer.wrap(boundsRotation);
+        RotationBuffer.order(ByteOrder.LITTLE_ENDIAN);
+        bound.addProperty("Rotation", RotationBuffer.get());
+
+        decodedJson.add("Bounds", bound);
 
         return decodedJson;
 
@@ -156,6 +185,14 @@ public class DecodeToJson {
         return buffAssetCount.getShort();
 
     }
+
+    public static float getFloatFromBytes(byte[] bytes) {
+        ByteBuffer BuffVectorStream = ByteBuffer.wrap(bytes);
+        BuffVectorStream.order(ByteOrder.LITTLE_ENDIAN);
+
+        return BuffVectorStream.getFloat();
+    }
+
 
     public static UUID getUUIDFromBytes(byte[] bytes) {
         ByteBuffer byteBuffer = ByteBuffer.wrap(bytes);

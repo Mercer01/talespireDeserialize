@@ -32,70 +32,132 @@ This was made with quite a bit of help by lagicarus/Oceanlord on the spec as wel
 
 example:
 ```
-H4sIAAAAAAAACzv369xFRgYWhvs5R5XvJBT7LuQLWOJq8PoNI0PbYu1UR3dX5SWe+65a1e96KV3HBRT71RQW6OR8w7Xx7mbZX6pPJ4DUyTMZpUt+feW0nJHvkfuGmjyQGAOD26Et29c6MDBoHGRgYLBnYFCwB9E8DA32ILkU08dAOQmI3Pw6qBzHIQYGJ6icBpocCID0vcYpt2kWryOmHMg+LwJmguQssMg5HbryeCcWOZA7vXDIQeyDyKH7DyTnhEMO4hYGhhYsYQaTs8CUM1FqAMktajkIlTtg78JZ7ACiAUoWpfTcAQAA
+H4sIAAAAAAAACzv369xFRgYmht71eR8Z67I99uXKL0oMm3OFhYGBoUWRL6kzRdClbaeS1eGIY94gMQaGAw4MDAvsGRianBgYGuwh7AZ7jv///wNprHIQfQKOEH4Fqj4w+wFUXw2KHIPz2nsQOQcgLoDKNSDpA7kFROegyYFAA1SuBlWOCVmuBIu+C0A5BgeIOxOg7AYHAKB2UtcoAQAA```
 ```
 will be transformed into 
 
 ```Json
 {
-	"magichex": "CE FA CE D1 ",
-	"Version": 1,
-	"Layout": 4,
-	"Assets": [{
-		"UUID": "df6cc523-dc60-734d-a10e-50a44530ebec",
-		"Count": 1,
-		"Layout": [{
-			"VectorPair0": [-49.5, 5.4286747, -10.5, 0.5, 0.625, 0.5],
-			"Rotation": 12
-		}]
-	}, {
-		"UUID": "2b654147-4523-a449-bed5-3a7fbae91b7e",
-		"Count": 10,
-		"Layout": [{
-			"VectorPair0": [-49.5, 7.1002674, -9.5, 0.5, 0.99461365, 0.5],
-			"Rotation": 12
-		}, {
-			"VectorPair1": [-48.5, 7.1002674, -10.5, 0.5, 0.99461365, 0.5],
-			"Rotation": 12
-		}, {
-			"VectorPair2": [-49.5, 7.3502674, -10.5, 0.5, 0.99461365, 0.5],
-			"Rotation": 12
-		}, {
-			"VectorPair3": [-49.5, 8.850267, -10.5, 0.5, 0.99461365, 0.5],
-			"Rotation": 12
-		}, {
-			"VectorPair4": [-50.5, 7.1002674, -10.5, 0.5, 0.99461365, 0.5],
-			"Rotation": 12
-		}, {
-			"VectorPair5": [-49.5, 7.1002674, -11.5, 0.5, 0.99461365, 0.5],
-			"Rotation": 12
-		}, {
-			"VectorPair6": [-48.5, 5.809061, -11.5, 0.5, 0.99461365, 0.5],
-			"Rotation": 12
-		}, {
-			"VectorPair7": [-50.5, 5.809061, -11.5, 0.5, 0.99461365, 0.5],
-			"Rotation": 12
-		}, {
-			"VectorPair8": [-50.5, 5.809061, -9.5, 0.5, 0.99461365, 0.5],
-			"Rotation": 12
-		}, {
-			"VectorPair9": [-48.5, 5.809061, -9.5, 0.5, 0.99461365, 0.5],
-			"Rotation": 12
-		}]
-	}, {
-		"UUID": "fa825651-4243-d845-81dd-b31dfa25e590",
-		"Count": 1,
-		"Layout": [{
-			"VectorPair0": [-49.5, 4.125, -10.5, 0.5, 0.625, 0.5],
-			"Rotation": 12
-		}]
-	}, {
-		"UUID": "1f023267-19f5-ea42-a701-0ee247b07c6e",
-		"Count": 1,
-		"Layout": [{
-			"VectorPair0": [-49.5, 2.875, -10.5, 0.5, 0.625, 0.5],
-			"Rotation": 12
-		}]
-	}]
+    "magichex": "CE FA CE D1 ",
+    "Version": 1,
+    "Layout": 2,
+    "Assets": [{
+        "UUID": "8daf6ef1-017e-6b48-be6d-1fa261569cd4",
+        "Count": 4,
+        "Layout": [{
+            "location": {
+                "x": 6.0,
+                "y": 1.25,
+                "z": 65.0
+            },
+            "size": {
+                "x": 1.0,
+                "y": 1.25,
+                "z": 1.0
+            },
+            "Rotation": 8
+        }, {
+            "location": {
+                "x": 4.0,
+                "y": 1.25,
+                "z": 65.0
+            },
+            "size": {
+                "x": 1.0,
+                "y": 1.25,
+                "z": 1.0
+            },
+            "Rotation": 4
+        }, {
+            "location": {
+                "x": 9.0,
+                "y": 1.25,
+                "z": 62.0
+            },
+            "size": {
+                "x": 1.0,
+                "y": 1.25,
+                "z": 1.0
+            },
+            "Rotation": 8
+        }, {
+            "location": {
+                "x": 7.0,
+                "y": 1.25,
+                "z": 63.0
+            },
+            "size": {
+                "x": 1.0,
+                "y": 1.25,
+                "z": 1.0
+            },
+            "Rotation": 0
+        }]
+    }, {
+        "UUID": "84210e62-8964-1144-86b9-223ac358c64b",
+        "Count": 4,
+        "Layout": [{
+            "location": {
+                "x": 7.0,
+                "y": 3.0,
+                "z": 60.0
+            },
+            "size": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "Rotation": 8
+        }, {
+            "location": {
+                "x": 6.0,
+                "y": 1.0,
+                "z": 59.0
+            },
+            "size": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "Rotation": 8
+        }, {
+            "location": {
+                "x": 4.0,
+                "y": 1.0,
+                "z": 63.0
+            },
+            "size": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "Rotation": 8
+        }, {
+            "location": {
+                "x": 4.0,
+                "y": 1.0,
+                "z": 61.0
+            },
+            "size": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "Rotation": 8
+        }]
+    }],
+    "Bounds": {
+        "location": {
+            "x": 6.5,
+            "y": 2.0,
+            "z": 62.0
+        },
+        "size": {
+            "x": 3.5,
+            "y": 2.0,
+            "z": 4.0
+        },
+        "Rotation": 0
+    }
 }
 ```

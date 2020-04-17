@@ -123,18 +123,24 @@ public class DecodeToJson {
         decodedJson.add("Assets", AllAssets);
 
         JsonObject bound = new JsonObject();
-        JsonArray bounds = new JsonArray();
-
-        for (int j = 0; j < 6; j++) {
+        for(String temp: Arrays.asList("location","size")) {
             byte[] vectorFloats = new byte[4];
             readBytes(stream, vectorFloats);
+            float x = getFloatFromBytes(vectorFloats);
 
-            ByteBuffer BuffVectorStream = ByteBuffer.wrap(vectorFloats);
-            BuffVectorStream.order(ByteOrder.LITTLE_ENDIAN);
-            float vectorFloat = BuffVectorStream.getFloat();
-            bounds.add(vectorFloat);
+            vectorFloats = new byte[4];
+            readBytes(stream, vectorFloats);
+            float y =  getFloatFromBytes(vectorFloats);
+
+            vectorFloats = new byte[4];
+            readBytes(stream, vectorFloats);
+            float z = getFloatFromBytes(vectorFloats);
+
+            vector3 vector = new vector3(x,y,z);
+
+            bound.add(temp, vector.toJSON());
         }
-        bound.add("Vector0",bounds);
+
         // get Rotation Header.
         byte[] boundsRotation = new byte[1];
         readBytes(stream, boundsRotation);
